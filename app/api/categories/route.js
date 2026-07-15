@@ -77,7 +77,7 @@ export async function PATCH(req) {
 
         if (updateResult.matchedCount === 0) {
             return NextResponse.json({ message: "التصنيف غير موجود أو لا تملك صلاحية تعديله" }, { status: 404 });
-        }
+        }   
 
         // 2. Denormalization update: update category name in all products that use this category
         await db.collection("products").updateMany(
