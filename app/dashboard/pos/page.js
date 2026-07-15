@@ -34,7 +34,6 @@ export default function POSPage() {
     const [confirming, setConfirming] = useState(false);
     const [dialogOpen, setDialogOpen] = useState(false);
     const [saleSummary, setSaleSummary] = useState(null);
-    const [barcodeDisabled, setBarcodeDisabled] = useState(false);
 
     // ── Cart Logic ──────────────────────────────────────────────
     const addToCart = useCallback((product) => {
@@ -105,7 +104,6 @@ export default function POSPage() {
     const handleConfirm = async () => {
         if (cart.length === 0) return;
         setConfirming(true);
-        setBarcodeDisabled(true);
         try {
             const payload = {
                 items: cart,
@@ -123,7 +121,8 @@ export default function POSPage() {
             const data = await res.json();
             if (!res.ok) throw new Error(data?.message ?? "تعذر تأكيد البيع");
 
-            // Build receipt data
+            // Snapshot for the receipt THEN clear immediately — seller sees empty
+            // cart right away so there's zero risk of a double-sale click
             setSaleSummary({
                 items: cart,
                 subtotal,
@@ -133,19 +132,20 @@ export default function POSPage() {
                 change,
                 createdAt: new Date().toISOString(),
             });
+            clearCart();       // ← reset cart/discount/paid instantly
             setDialogOpen(true);
         } catch (err) {
             toast.error(err.message);
         } finally {
             setConfirming(false);
-            setBarcodeDisabled(false);
         }
     };
 
+    // Called by dialog on auto-close OR manual "فاتورة جديدة" click
     const handleNewSale = () => {
-        clearCart();
         setDialogOpen(false);
         setSaleSummary(null);
+        // Cart is already empty — nothing else needed
     };
 
     return (
@@ -160,8 +160,8 @@ export default function POSPage() {
             <div className="flex gap-4 items-start">
                 {/* ── Left: Cart & Scanner (70%) ── */}
                 <div className="flex flex-col gap-3 min-w-0 flex-7">
-                    <BarcodeInput onBarcode={handleBarcodeScanned} disabled={barcodeDisabled} />
-                    <ProductSearch onSelect={addToCart} disabled={barcodeDisabled} />
+                    <BarcodeInput onBarcode={handleBarcodeScanned} />
+                    <ProductSearch onSelect={addToCart} />
                     <CartTable
                         cart={cart}
                         onQuantityChange={handleQuantityChange}
