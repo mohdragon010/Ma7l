@@ -10,6 +10,7 @@ import {
     Menu,
     Package,
     Settings,
+    ShoppingCart,
     Store,
     Tag,
 } from "lucide-react"
@@ -33,6 +34,12 @@ const sections = [
         items: [
             { href: "/dashboard", label: "الرئيسية", icon: LayoutDashboard },
             { href: "/dashboard/products", label: "المنتجات", icon: Package },
+        ],
+    },
+    {
+        label: "المبيعات",
+        items: [
+            { href: "/dashboard/pos", label: "نقطة البيع", icon: ShoppingCart },
         ],
     },
     {
