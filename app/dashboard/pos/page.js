@@ -156,10 +156,10 @@ export default function POSPage() {
                 <p className="text-xs text-muted-foreground mt-0.5">امسح الباركود أو ابحث عن المنتج لإضافته للفاتورة</p>
             </header>
 
-            {/* Main layout: 70 / 30 */}
-            <div className="flex gap-4 items-start">
-                {/* ── Left: Cart & Scanner (70%) ── */}
-                <div className="flex flex-col gap-3 min-w-0 flex-7">
+            {/* Main layout: single column on mobile → 70/30 side-by-side on lg+ */}
+            <div className="flex flex-col lg:flex-row gap-4 items-start">
+                {/* ── Cart & Scanner (full width on mobile, 70% on desktop) ── */}
+                <div className="flex flex-col gap-3 min-w-0 w-full lg:flex-[7]">
                     <BarcodeInput onBarcode={handleBarcodeScanned} />
                     <ProductSearch onSelect={addToCart} />
                     <CartTable
@@ -169,8 +169,8 @@ export default function POSPage() {
                     />
                 </div>
 
-                {/* ── Right: Order Summary (30%) ── */}
-                <div className="flex-3 min-w-[260px] max-w-sm">
+                {/* ── Order Summary (full width on mobile, 30% on desktop) ── */}
+                <div className="w-full lg:flex-[3] lg:min-w-[260px] lg:max-w-sm">
                     <OrderSummary
                         cart={cart}
                         subtotal={subtotal}
