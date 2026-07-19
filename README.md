@@ -66,7 +66,3 @@ You'll need Node.js installed and a MongoDB instance (local or Atlas). You will 
 
 - **HTTPS Requirement**: If you plan to use the device camera for barcode scanning, the application *must* be served over HTTPS. Browsers block camera access on unsecure HTTP connections (except for localhost).
 - **Environment**: Ensure your production environment uses a strong `JSONWEBTOKEN_SECRET`.
-
-## License
-
-MIT
