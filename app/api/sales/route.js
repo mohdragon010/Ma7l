@@ -95,3 +95,23 @@ export async function POST(req) {
         return NextResponse.json({ message: "حدث خطأ في الخادم" }, { status: 500 });
     }
 }
+
+export async function GET(req) {
+    try {
+        const user = await authenticate();
+        if (!user) return NextResponse.json({ message: "يرجى إعادة تسجيل الدخول" }, { status: 401 });
+
+        const client = await clientPromise;
+        const db = client.db("Ma7l");
+        const salesCol = db.collection("sales");
+
+        const sales = await salesCol.find({ ownerId: user.userId })
+            .sort({ createdAt: -1 })
+            .toArray();
+
+        return NextResponse.json({ sales }, { status: 200 });
+    } catch (err) {
+        console.error("Sales fetch error:", err);
+        return NextResponse.json({ message: "حدث خطأ أثناء جلب المبيعات" }, { status: 500 });
+    }
+}

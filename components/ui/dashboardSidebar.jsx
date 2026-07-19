@@ -11,6 +11,7 @@ import {
     Package,
     Settings,
     ShoppingCart,
+    Receipt,
     Store,
     Tag,
 } from "lucide-react"
@@ -40,6 +41,7 @@ const sections = [
         label: "المبيعات",
         items: [
             { href: "/dashboard/pos", label: "نقطة البيع", icon: ShoppingCart },
+            { href: "/dashboard/sales", label: "سجل المبيعات", icon: Receipt },
         ],
     },
     {
