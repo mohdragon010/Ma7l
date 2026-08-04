@@ -91,7 +91,7 @@ export default function CartTable({ cart, onQuantityChange, onRemove }) {
                                                 <Package className="h-3.5 w-3.5 text-muted-foreground" />
                                             )}
                                         </div>
-                                        <span className="font-medium truncate max-w-[140px]" title={item.name}>
+                                        <span className="font-medium truncate max-w-35" title={item.name}>
                                             {item.name}
                                         </span>
                                     </div>

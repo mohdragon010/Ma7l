@@ -57,8 +57,8 @@ export default function LowStockPage() {
             <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                 {loading ? (
                     <>
-                        <Skeleton className="h-[120px] w-full rounded-xl" />
-                        <Skeleton className="h-[120px] w-full rounded-xl" />
+                        <Skeleton className="h-30 w-full rounded-xl" />
+                        <Skeleton className="h-30 w-full rounded-xl" />
                     </>
                 ) : (
                     <>
