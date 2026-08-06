@@ -43,6 +43,7 @@ export default function SettingsPage() {
                     setEmail(data.user.email || "");
                 }
             } catch (err) {
+                console.log(err)
                 toast.error("حدث خطأ أثناء جلب البيانات");
             } finally {
                 setLoading(false);

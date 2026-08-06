@@ -277,11 +277,11 @@ export default function Dashboard() {
                             </CardHeader>
                             <CardContent>
                                 {categoryValues.length === 0 ? (
-                                    <div className="flex h-[300px] items-center justify-center text-muted-foreground text-sm">
+                                    <div className="flex h-75 items-center justify-center text-muted-foreground text-sm">
                                         لا توجد بضائع مصنفة لعرضها
                                     </div>
                                 ) : (
-                                    <div className="h-[300px] w-full" dir="ltr">
+                                    <div className="h-75 w-full" dir="ltr">
                                         <ResponsiveContainer width="100%" height="100%">
                                             <BarChart data={categoryValues} margin={{ top: 10, right: 10, left: 10, bottom: 20 }}>
                                                 <XAxis dataKey="name" stroke="#888888" fontSize={11} tickLine={false} axisLine={false} />
@@ -306,12 +306,12 @@ export default function Dashboard() {
                             </CardHeader>
                             <CardContent className="flex flex-col items-center justify-center">
                                 {totalStockItems === 0 ? (
-                                    <div className="flex h-[300px] items-center justify-center text-muted-foreground text-sm">
+                                    <div className="flex h-75 items-center justify-center text-muted-foreground text-sm">
                                         لا توجد بيانات كافية
                                     </div>
                                 ) : (
                                     <>
-                                        <div className="h-[240px] w-full relative" dir="ltr">
+                                        <div className="h-60 w-full relative" dir="ltr">
                                             <ResponsiveContainer width="100%" height="100%">
                                                 <PieChart>
                                                     <Pie
@@ -394,7 +394,7 @@ export default function Dashboard() {
                                                                     <Package className="h-4 w-4 text-muted-foreground" />
                                                                 )}
                                                             </div>
-                                                            <span className="font-medium text-foreground max-w-[150px] truncate">{p.name}</span>
+                                                            <span className="font-medium text-foreground max-w-37.5 truncate">{p.name}</span>
                                                         </td>
                                                         <td className="py-3 text-muted-foreground text-xs">{formatDate(p.createdAt)}</td>
                                                         <td className="py-3 font-medium text-foreground">
@@ -453,7 +453,7 @@ export default function Dashboard() {
                                                                     <Package className="h-4 w-4 text-muted-foreground" />
                                                                 )}
                                                             </div>
-                                                            <span className="font-medium text-foreground max-w-[150px] truncate">{p.name}</span>
+                                                            <span className="font-medium text-foreground max-w-37.5 truncate">{p.name}</span>
                                                         </td>
                                                         <td className="py-3">
                                                             <div className="flex flex-col">

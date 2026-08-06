@@ -23,7 +23,7 @@ import { ModeToggle } from "@/components/ui/themeToggle"
 const navLinks = [
     { href: "/", label: "الرئيسية" },
     { href: "/dashboard", label: "لوحة التحكم" },
-    { href: "/profile", label: "البروفايل" },
+    { href: "/settings", label: "الإعدادات" },
 ]
 
 function getInitials(name) {
