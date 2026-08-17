@@ -78,7 +78,7 @@ export default function HomePage() {
           <div className="text-center space-y-8">
 
             <div className="space-y-6">
-              <span className="inline-flex bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-semibold">
+              <span className="inline-flex dark:bg-primary/10 bg-primary text-primary px-4 py-2 rounded-full text-sm font-semibold">
                 نظام مجاني لإدارة المحلات
               </span>
 
