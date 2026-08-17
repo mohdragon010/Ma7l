@@ -51,14 +51,16 @@ export default function SignupForm({ setActiveTab }) {
 
             const data = await res.json();
 
-            if (!res.ok) { throw new Error(data?.message ?? "حدث خطأ، يرجى إعادة المحاولة") }
-
+            if (!res.ok) {
+                throw new Error(data?.message ?? "حدث خطأ، يرجى إعادة المحاولة");
+            };
+            
+            router.refresh()
+            router.push("/verify-email")
         } catch (error) {
             setError(error.message)
         } finally {
             setLoading(false)
-            router.refresh()
-            router.push("/verify-email")
         }
     }
     return (

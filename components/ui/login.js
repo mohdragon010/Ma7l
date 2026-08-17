@@ -42,15 +42,15 @@ export default function LoginForm({ setActiveTab }){
             const data = await res.json();
 
             if(!res.ok){
-                setError(data?.message ?? "حدث خطأ، يرجى إعادة المحاولة")
+                setError(data?.message ?? "حدث خطأ، يرجى إعادة المحاولة");
+                return;
             }
-            
+            router.refresh()
+            router.push("/dashboard")
         }catch(err){
             setError(err.message)
         }finally{
             setLoading(false)
-            router.refresh()
-            router.push("/dashboard")
         }
 
     }
